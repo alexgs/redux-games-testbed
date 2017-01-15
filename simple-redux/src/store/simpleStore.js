@@ -27,10 +27,9 @@ let startingValue = 0;
 let incrementAction = simpleActionCreator.increment();
 let store = createStore( counterReducer, startingValue );
 
-console.log( store.getState() );
+store.subscribe( () => {
+    console.log( 'State: ' + store.getState() );
+} );
 store.dispatch( incrementAction );
-console.log( store.getState() );
 store.dispatch( incrementAction );
-console.log( store.getState() );
 store.dispatch( incrementAction );
-console.log( store.getState() );
