@@ -1,13 +1,27 @@
 import React, { Component } from 'react';
+import simpleActionCreator from './actions/simpleActionCreators';
 
 class AwesomeApp extends Component {
     constructor( props ) {
         super( props );
         this.state = {
-            // Be sure to call `store.getState()` and not just hand it the
-            // store object!
             value: props.store.getState()
         };
+    }
+
+    componentDidMount() {
+        this.props.store.subscribe( this.handleChange.bind( this ) );
+    }
+
+    handleChange() {
+        this.setState( {
+            value: this.props.store.getState()
+        } );
+    }
+
+    handleClick() {
+        let action = simpleActionCreator.increment();
+        this.props.store.dispatch( action );
     }
 
     render() {
@@ -15,6 +29,7 @@ class AwesomeApp extends Component {
             <div>
                 <h1>Hello Awesome World!</h1>
                 <p>Counter value: { this.state.value }</p>
+                <p><button onClick={ this.handleClick.bind( this ) }>+</button></p>
             </div>
         );
     }
