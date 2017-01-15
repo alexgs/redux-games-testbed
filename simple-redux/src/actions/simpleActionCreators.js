@@ -1,3 +1,5 @@
+'use strict';
+
 import { INCREMENT_COUNTER } from '../constants';
 
 let simpleActionCreators = {

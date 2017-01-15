@@ -14,10 +14,3 @@ const counter = function counterReducer( state = initialState, action ) {
 };
 
 export default counter;
-
-let state = 0;
-console.log( state );
-state = counter( state, { type: INCREMENT_COUNTER } );
-console.log( state );
-state = counter( state, { type: INCREMENT_COUNTER } );
-console.log( state );
