@@ -9,8 +9,11 @@ const counter = function counterReducer( state = initialState, action ) {
     if ( !Immutable.Map.isMap( state ) ) {
         throw new Error( 'Argument `state` must be type Immutable.Map' );
     }
+    if ( !Immutable.Map.isMap( action ) ) {
+        throw new Error( 'Argument `action` must be type Immutable.Map' );
+    }
 
-    switch ( action.type ) {
+    switch ( action.get( 'type' ) ) {
         case INCREMENT_COUNTER:
             let newValue = state.get( 'value' ) + 1;
             return state.set( 'value', newValue );
