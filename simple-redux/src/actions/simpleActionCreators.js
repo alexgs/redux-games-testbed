@@ -1,14 +1,13 @@
 'use strict';
 
-import Immutable from 'immutable';
 import { INCREMENT_COUNTER } from '../constants';
 
 let simpleActionCreators = {
 
     increment() {
-        return Immutable.Map( {
+        return {
             type: INCREMENT_COUNTER
-        } );
+        };
     }
 
 };
