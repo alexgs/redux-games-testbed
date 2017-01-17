@@ -5,7 +5,7 @@ class AwesomeApp extends Component {
     constructor( props ) {
         super( props );
         this.state = {
-            value: props.store.getState()
+            value: props.store.getState().get( 'value' )
         };
     }
 
@@ -15,7 +15,7 @@ class AwesomeApp extends Component {
 
     handleChange() {
         this.setState( {
-            value: this.props.store.getState()
+            value: this.props.store.getState().get( 'value' )
         } );
     }
 
