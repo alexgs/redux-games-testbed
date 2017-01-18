@@ -10,6 +10,8 @@ module.exports = {
     dev: {
         description: 'Start the Webpack dev server',
         tasks: [ 'webpack-dev-server:dev' ]
-    }
+    },
+
+    mocha: [ 'mochaTest' ]
 
 };
