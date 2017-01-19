@@ -20,3 +20,4 @@ const counter = function counterReducer( state = initialState, action ) {
 };
 
 export default counter;
+module.exports = counter;

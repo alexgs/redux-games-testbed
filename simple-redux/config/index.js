@@ -1,7 +1,9 @@
-import path from 'path';
+let path = require( 'path' );
 
-let config = {
-    srcPath: path.resolve( __dirname, '..', 'src' )
+module.exports = {
+    srcPath: path.resolve( __dirname, '..', 'src' ),
+
+    srcResolve: function srcResolve() {
+        return path.resolve( this.srcPath, ...arguments );
+    }
 };
-
-export default config;
