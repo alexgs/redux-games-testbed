@@ -12,6 +12,11 @@ module.exports = {
         tasks: [ 'webpack-dev-server:dev' ]
     },
 
-    mocha: [ 'mochaTest' ]
+    mocha: [ 'mochaTest' ],
+
+    test: {
+        description: 'Test continuously, watching for changes',
+        tasks: [ 'mochaTest', 'watch:mochaTests' ]
+    }
 
 };

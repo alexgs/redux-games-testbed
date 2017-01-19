@@ -5,5 +5,7 @@ module.exports = {
 
     srcResolve: function srcResolve() {
         return path.resolve( this.srcPath, ...arguments );
-    }
+    },
+
+    testPath: path.resolve( __dirname, '..', 'test' )
 };
