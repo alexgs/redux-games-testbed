@@ -4,9 +4,8 @@ import chai from 'chai';
 import dirtyChai from 'dirty-chai';
 import Immutable from 'immutable';
 
-import config from '../config';
-let actionCreator = require( config.srcResolve( 'actions/simpleActionCreators' ) );
-let counterReducer = require( config.srcResolve( 'reducers/counterReducer' ) );
+import actionCreator from '../src/actions/simpleActionCreators';
+import counterReducer from '../src/actions/simpleActionCreators';
 
 chai.use( dirtyChai );
 let expect = chai.expect;

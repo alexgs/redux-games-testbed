@@ -4,10 +4,6 @@ import chai from 'chai';
 import dirtyChai from 'dirty-chai';
 import Immutable from 'immutable';
 
-// import config from '../../config';
-// let actionCreator = require( config.srcResolve( 'actions/simpleActionCreators' ) );
-// let counterReducer = require( config.srcResolve( 'reducers/counterReducer' ) );
-
 import counterReducer from '../../src/reducers/counterReducer';
 
 chai.use( dirtyChai );
