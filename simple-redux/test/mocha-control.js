@@ -11,23 +11,27 @@ let counterReducer = require( config.srcResolve( 'reducers/counterReducer' ) );
 chai.use( dirtyChai );
 let expect = chai.expect;
 
-describe( 'Mocha', function() {
+describe( 'Experimental Controls', function() {
 
-    it( 'should work', function() {
-        expect( 1 + 1 ).to.equal( 2 );
-        expect( true ).to.be.ok();
+    context( 'Mocha', function() {
+
+        it( 'should work', function() {
+            expect( 1 + 1 ).to.equal( 2 );
+            expect( true ).to.be.ok();
+            expect( 'true' === 'false' ).to.be.false();
+        } );
+
     } );
 
-} );
+    context( 'The reducer', function() {
 
-describe( 'The reducer', function() {
+        it( 'should return an Immutable Map with a value of 1', function() {
+            let initialState = Immutable.Map( { value: 0 } );
+            let action = actionCreator.increment();
+            let newState = counterReducer( initialState, action );
+            expect( Immutable.Map.isMap( newState ) ).to.be.true();
+            expect( newState.get( 'value' ) ).to.equal( 1 );
+        } );
 
-    it( 'should return an Immutable Map with a value of 1', function() {
-        let initialState = Immutable.Map( { value: 0 } );
-        let action = actionCreator.increment();
-        let newState = counterReducer( initialState, action );
-        expect( Immutable.Map.isMap( newState ) ).to.be.true();
-        expect( newState.get( 'value' ) ).to.equal( 1 );
     } );
-
 } );

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="dirtyChai" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/src/dirtyChai.d.ts" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/dirtyChai.d.ts" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
