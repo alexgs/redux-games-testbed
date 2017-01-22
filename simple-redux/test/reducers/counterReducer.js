@@ -18,7 +18,21 @@ describe.only( 'The counter reducer', function() {
         } ).to.not.throw();
     } );
 
-    it( 'throws an error if the first argument is not an Immutable Map' );
+    it( 'throws an error if the first argument is not an Immutable Map', function( done ) {
+        [
+            { },
+            27,
+            'hello',
+            null,
+            { value: 8 }
+        ].forEach( ( element ) => {
+            expect( function() {
+                counterReducer( element, { type: undefined } );
+            } ).to.throw( Error, 'this is an error' );
+        } );
+        done();
+    } );
+
     it( 'returns the original state if `action.type` is not the constant "INCREMENT_COUNTER"' );
     it( 'returns a new state when `action.type` is "INCREMENT_COUNTER"' );
     it( 'returns a state with an increment `value` when `action.type` is "INCREMENT_COUNTER"' );
