@@ -45,7 +45,28 @@ describe.only( 'The counter reducer', function() {
         expect( newState === state ).to.be.true();
     } );
 
-    it( 'returns a new state when `action.type` is "INCREMENT_COUNTER"' );
-    it( 'returns a state with an increment `value` when `action.type` is "INCREMENT_COUNTER"' );
+    it( 'returns a new state when `action.type` is "INCREMENT_COUNTER"', function() {
+        let action = { type: INCREMENT_COUNTER };
+        let state = Immutable.Map( {
+            value: 0,
+            foo: 'bar'
+        } );
+        let newState = counterReducer( state, action );
+        expect( Immutable.Map.isMap( newState ) ).to.be.true();
+        expect( newState === state ).to.be.false();
+        expect( newState.toJS() ).to.not.deep.equal( state.toJS() );
+    } );
+
+    it( 'returns a state with an incremented `value` when `action.type` is "INCREMENT_COUNTER"', function() {
+        let action = { type: INCREMENT_COUNTER };
+        let state = Immutable.Map( {
+            value: 0,
+            foo: 'bar'
+        } );
+        let newState = counterReducer( state, action );
+        let newValue = newState.get( 'value' );
+        let oldValue = state.get( 'value' );
+        expect( newValue ).to.equal( oldValue + 1 );
+    } );
 
 } );

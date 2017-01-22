@@ -11,9 +11,9 @@ const counter = function counterReducer( state = initialState, action ) {
     }
 
     switch ( action.type ) {
-        // case INCREMENT_COUNTER:
-        //     let newValue = state.get( 'value' ) + 1;
-        //     return state.set( 'value', newValue );
+        case INCREMENT_COUNTER:
+            let newValue = state.get( 'value' ) + 1;
+            return state.set( 'value', newValue );
         default:
             return state;
     }
