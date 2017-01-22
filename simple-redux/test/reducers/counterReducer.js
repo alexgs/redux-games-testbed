@@ -4,6 +4,7 @@ import chai from 'chai';
 import dirtyChai from 'dirty-chai';
 import Immutable from 'immutable';
 
+import { INCREMENT_COUNTER } from '../../src/constants';
 import counterReducer, { errorMessages } from '../../src/reducers/counterReducer';
 
 chai.use( dirtyChai );
@@ -33,7 +34,17 @@ describe.only( 'The counter reducer', function() {
         done();
     } );
 
-    it( 'returns the original state if `action.type` is not the constant "INCREMENT_COUNTER"' );
+    it( 'returns the original state if `action.type` is not the constant "INCREMENT_COUNTER"', function() {
+        let action = { type: 'hot-pants' };
+        let state = Immutable.Map( {
+            value: 0,
+            foo: 'bar'
+        } );
+        let newState = counterReducer( state, action );
+        expect( Immutable.Map.isMap( newState ) ).to.be.true();
+        expect( newState === state ).to.be.true();
+    } );
+
     it( 'returns a new state when `action.type` is "INCREMENT_COUNTER"' );
     it( 'returns a state with an increment `value` when `action.type` is "INCREMENT_COUNTER"' );
 
