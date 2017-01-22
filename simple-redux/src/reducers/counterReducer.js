@@ -6,10 +6,10 @@ import { INCREMENT_COUNTER } from '../constants';
 let initialState = Immutable.Map( { value: 0 } );
 
 const counter = function counterReducer( state = initialState, action ) {
-    // if ( !Immutable.Map.isMap( state ) ) {
-    //     throw new Error( 'Argument `state` must be type Immutable.Map' );
-    // }
-    //
+    if ( !Immutable.Map.isMap( state ) ) {
+        throw new Error( errorMessages.stateImmutableMap );
+    }
+
     // switch ( action.type ) {
     //     case INCREMENT_COUNTER:
     //         let newValue = state.get( 'value' ) + 1;
@@ -20,4 +20,9 @@ const counter = function counterReducer( state = initialState, action ) {
 };
 
 export default counter;
-module.exports = counter;
+
+let errorMessages = {
+    stateImmutableMap: 'Argument `state` must be type Immutable.Map'
+};
+
+export { errorMessages };

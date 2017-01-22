@@ -4,7 +4,7 @@ import chai from 'chai';
 import dirtyChai from 'dirty-chai';
 import Immutable from 'immutable';
 
-import counterReducer from '../../src/reducers/counterReducer';
+import counterReducer, { errorMessages } from '../../src/reducers/counterReducer';
 
 chai.use( dirtyChai );
 let expect = chai.expect;
@@ -28,7 +28,7 @@ describe.only( 'The counter reducer', function() {
         ].forEach( ( element ) => {
             expect( function() {
                 counterReducer( element, { type: undefined } );
-            } ).to.throw( Error, 'this is an error' );
+            } ).to.throw( Error, errorMessages.stateImmutableMap );
         } );
         done();
     } );

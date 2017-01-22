@@ -13,4 +13,3 @@ let simpleActionCreators = {
 };
 
 export default simpleActionCreators;
-module.exports = simpleActionCreators;
