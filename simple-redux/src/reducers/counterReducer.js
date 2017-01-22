@@ -10,13 +10,13 @@ const counter = function counterReducer( state = initialState, action ) {
         throw new Error( errorMessages.stateImmutableMap );
     }
 
-    // switch ( action.type ) {
-    //     case INCREMENT_COUNTER:
-    //         let newValue = state.get( 'value' ) + 1;
-    //         return state.set( 'value', newValue );
-    //     default:
-    //         return state;
-    // }
+    switch ( action.type ) {
+        // case INCREMENT_COUNTER:
+        //     let newValue = state.get( 'value' ) + 1;
+        //     return state.set( 'value', newValue );
+        default:
+            return state;
+    }
 };
 
 export default counter;
