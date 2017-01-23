@@ -10,7 +10,7 @@ import counterReducer, { errorMessages } from '../../src/reducers/counterReducer
 chai.use( dirtyChai );
 let expect = chai.expect;
 
-describe.only( 'The counter reducer', function() {
+describe( 'The counter reducer', function() {
 
     it( 'accepts an Immutable Map for the first argument', function() {
         let state = Immutable.Map();
