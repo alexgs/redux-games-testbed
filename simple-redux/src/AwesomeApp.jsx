@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import simpleActionCreator from './actions/simpleActionCreators';
 
 class AwesomeApp extends Component {
@@ -34,5 +34,13 @@ class AwesomeApp extends Component {
         );
     }
 }
+
+AwesomeApp.propTypes = {
+    store: PropTypes.shape( {
+        dispatch: PropTypes.function,
+        getState: PropTypes.function,
+        subscribe: PropTypes.function
+    } ).isRequired
+};
 
 export default AwesomeApp;
