@@ -1,11 +1,13 @@
-let config = require( '../config' );
+let path = require( 'path' );
+let srcPath = path.resolve( __dirname, '..', 'src' );
+let testPath = path.resolve( __dirname, '..', 'test' );
 
 let watchConfig = {
     mochaTests: {
         files: [
-            config.srcPath  + '/**/*.js',
-            config.srcPath  + '/**/*.jsx',
-            config.testPath + '/**/*.js'
+            srcPath  + '/**/*.js',
+            srcPath  + '/**/*.jsx',
+            testPath + '/**/*.js'
         ],
         options: {
             force: true,
