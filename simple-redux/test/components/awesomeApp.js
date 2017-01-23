@@ -27,4 +27,14 @@ describe.only( 'The "Awesome App" component', function() {
         expect( h1elements.text() ).to.equal( 'Hello Awesome World!' );
     } );
 
+    context( 'responds to click events', function() {
+
+        it( 'on the plus button' );
+        it( 'using the `handleClick` function' );
+        it( 'by dispatching an action to the store' );
+
+    } );
+
+    it( 'updates the displayed value when the store changes' );
+
 } );
