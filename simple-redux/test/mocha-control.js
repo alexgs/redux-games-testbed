@@ -5,7 +5,7 @@ import dirtyChai from 'dirty-chai';
 import Immutable from 'immutable';
 
 import actionCreator from '../src/actions/simpleActionCreators';
-import counterReducer from '../src/actions/simpleActionCreators';
+import counterReducer from '../src/reducers/counterReducer';
 
 chai.use( dirtyChai );
 let expect = chai.expect;

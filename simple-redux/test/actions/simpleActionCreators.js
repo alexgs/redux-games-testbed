@@ -10,7 +10,7 @@ import actionCreators from '../../src/actions/simpleActionCreators';
 chai.use( dirtyChai );
 let expect = chai.expect;
 
-describe.only( 'Simple action creators', function() {
+describe( 'Simple action creators', function() {
 
     it( 'has a member function `increment`', function() {
         expect( actionCreators ).to.have.ownProperty( 'increment' );
