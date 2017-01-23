@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="sinon" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/sinon-chai.d.ts" />
+        <item url="file://$PROJECT_DIR$/sinon.d.ts" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/sinon-chai.d.ts" />
+      <root url="file://$PROJECT_DIR$/sinon.d.ts" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
