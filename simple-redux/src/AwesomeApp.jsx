@@ -28,7 +28,9 @@ class AwesomeApp extends Component {
         return (
             <div>
                 <h1>Hello Awesome World!</h1>
-                <p>Counter value: { this.state.value }</p>
+                <p>Counter value:&nbsp;
+                    <span className="state-value">{ this.state.value }</span>
+                </p>
                 <p><button onClick={ this.handleClick.bind( this ) }>+</button></p>
             </div>
         );

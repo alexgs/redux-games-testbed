@@ -4,7 +4,7 @@ declare global {
 
     export namespace Chai {
 
-        interface Assertion {
+        interface Assertion extends LanguageChains, NumericComparison, TypeComparison {
             ok(): Assertion;
             true(): Assertion;
             false(): Assertion;

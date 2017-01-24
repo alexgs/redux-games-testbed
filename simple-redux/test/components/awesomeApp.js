@@ -59,6 +59,19 @@ describe.only( 'The "Awesome App" component', function() {
 
     } );
 
-    it( 'updates the displayed value when the store changes' );
+    it( 'updates the displayed value when the store changes', function() {
+        let action = actionCreators.increment();
+        let wrapper = shallow( <AwesomeApp store={ store } /> );
+        // wrapper.find( 'button' ).simulate( 'click' );
+        store.dispatch( action );
+
+        let valueElement = wrapper.find( '.state-value' );
+        let valueText = valueElement.text();
+        let value = parseInt( valueText );
+        expect( isNaN( value ) ).to.be.false();
+        expect( store.getState().get( 'value' ) ).to.equal( 1 );
+        expect( value ).to.equal( 1 );
+
+    } );
 
 } );
