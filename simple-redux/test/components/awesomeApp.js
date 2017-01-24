@@ -61,9 +61,8 @@ describe.only( 'The "Awesome App" component', function() {
 
     it( 'updates the displayed value when the store changes', function() {
         let action = actionCreators.increment();
-        let wrapper = shallow( <AwesomeApp store={ store } /> );
-        // wrapper.find( 'button' ).simulate( 'click' );
         store.dispatch( action );
+        let wrapper = shallow( <AwesomeApp store={ store } /> );
 
         let valueElement = wrapper.find( '.state-value' );
         let valueText = valueElement.text();
