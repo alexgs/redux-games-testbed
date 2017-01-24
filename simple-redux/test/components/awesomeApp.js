@@ -10,6 +10,7 @@ import sinonChai from 'sinon-chai';
 import { shallow } from 'enzyme';
 
 import AwesomeApp from '../../src/AwesomeApp';
+import actionCreators from '../../src/actions/simpleActionCreators';
 import counterReducer from '../../src/reducers/counterReducer';
 
 chai.use( sinonChai );
@@ -33,38 +34,27 @@ describe.only( 'The "Awesome App" component', function() {
     context( 'responds to click events', function() {
 
         beforeEach( function() {
-            sinon.spy( AwesomeApp.prototype, 'handleClick' );
             sinon.spy( store, 'dispatch' );
         } );
 
         afterEach( function() {
-            AwesomeApp.prototype.handleClick.restore();
             store.dispatch.restore();
         } );
 
         it( 'on the plus button', function() {
-            expect( AwesomeApp.prototype.handleClick ).has.callCount( 0 );
             let wrapper = shallow( <AwesomeApp store={ store } /> );
             let buttons = wrapper.find( 'button' );
             expect( buttons ).has.lengthOf( 1 );
             expect( buttons.text() ).equals( '+' );
         } );
 
-        it( 'using the `handleClick` function', function() {
-            expect( AwesomeApp.prototype.handleClick ).has.callCount( 0 );
-            let wrapper = shallow( <AwesomeApp store={ store } /> );
-            wrapper.find( 'button' ).simulate( 'click' );
-            expect( AwesomeApp.prototype.handleClick ).is.calledOnce();
-        } );
-
-        it( 'by dispatching an action to the store', function() {
-            expect( AwesomeApp.prototype.handleClick ).has.callCount( 0 );
+        it( 'by dispatching an "INCREMENT_COUNTER" action to the store', function() {
+            let action = actionCreators.increment();
             let wrapper = shallow( <AwesomeApp store={ store } /> );
             wrapper.find( 'button' ).simulate( 'click' );
 
-            expect( AwesomeApp.prototype.handleClick ).is.calledOnce();
             expect( store.dispatch ).is.calledOnce();
-            expect( store.dispatch ).is.calledAfter( AwesomeApp.prototype.handleClick );
+            expect( store.dispatch ).is.calledWithExactly( action );
         } );
 
     } );

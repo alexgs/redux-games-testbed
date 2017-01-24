@@ -9,6 +9,7 @@ declare global {
             callCount( count: number ): Assertion;
             calledAfter( spy:SinonSpy );
             calledOnce(): Assertion;
+            calledWithExactly( ...args ): Assertion;
         }
     }
 }
