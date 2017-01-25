@@ -7,7 +7,7 @@ import chai from 'chai';
 import dirtyChai from 'dirty-chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import AwesomeApp from '../../src/AwesomeApp';
 import actionCreators from '../../src/actions/simpleActionCreators';
@@ -60,16 +60,29 @@ describe.only( 'The "Awesome App" component', function() {
     } );
 
     it( 'updates the displayed value when the store changes', function() {
-        let action = actionCreators.increment();
-        store.dispatch( action );
-        let wrapper = shallow( <AwesomeApp store={ store } /> );
+        let getValue = function( wrapper ) {
+            let valueElement = wrapper.find( '.state-value' );
+            let valueText = valueElement.text();
+            let value = parseInt( valueText );
+            expect( isNaN( value ) ).to.be.false();
+            return value;
+        };
 
-        let valueElement = wrapper.find( '.state-value' );
-        let valueText = valueElement.text();
-        let value = parseInt( valueText );
-        expect( isNaN( value ) ).to.be.false();
-        expect( store.getState().get( 'value' ) ).to.equal( 1 );
-        expect( value ).to.equal( 1 );
+        let action = actionCreators.increment();
+        let wrapper = mount( <AwesomeApp store={ store } /> );
+        expect( getValue( wrapper ) ).to.equal( 0 );
+
+        store.dispatch( action );
+        // wrapper = wrapper.update();
+        // wrapper.update();
+        // wrapper = shallow( <AwesomeApp store={ store } /> );
+        // wrapper = wrapper.setProps( { store: store } );
+        // wrapper.setProps( { store: store } );
+        expect( getValue( wrapper ) ).to.equal( 1 );
+
+        store.dispatch( action );
+        store.dispatch( action );
+        expect( getValue( wrapper ) ).to.equal( 3 );
 
     } );
 
