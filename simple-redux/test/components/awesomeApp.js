@@ -59,31 +59,4 @@ describe.only( 'The "Awesome App" component', function() {
 
     } );
 
-    it( 'updates the displayed value when the store changes', function() {
-        let getValue = function( wrapper ) {
-            let valueElement = wrapper.find( '.state-value' );
-            let valueText = valueElement.text();
-            let value = parseInt( valueText );
-            expect( isNaN( value ) ).to.be.false();
-            return value;
-        };
-
-        let action = actionCreators.increment();
-        let wrapper = mount( <AwesomeApp store={ store } /> );
-        expect( getValue( wrapper ) ).to.equal( 0 );
-
-        store.dispatch( action );
-        // wrapper = wrapper.update();
-        // wrapper.update();
-        // wrapper = shallow( <AwesomeApp store={ store } /> );
-        // wrapper = wrapper.setProps( { store: store } );
-        // wrapper.setProps( { store: store } );
-        expect( getValue( wrapper ) ).to.equal( 1 );
-
-        store.dispatch( action );
-        store.dispatch( action );
-        expect( getValue( wrapper ) ).to.equal( 3 );
-
-    } );
-
 } );
