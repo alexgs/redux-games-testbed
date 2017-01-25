@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import simpleActionCreator from './actions/simpleActionCreators';
 
 class AwesomeApp extends Component {
@@ -28,11 +28,21 @@ class AwesomeApp extends Component {
         return (
             <div>
                 <h1>Hello Awesome World!</h1>
-                <p>Counter value: { this.state.value }</p>
+                <p>Counter value:&nbsp;
+                    <span className="state-value">{ this.state.value }</span>
+                </p>
                 <p><button onClick={ this.handleClick.bind( this ) }>+</button></p>
             </div>
         );
     }
 }
+
+AwesomeApp.propTypes = {
+    store: PropTypes.shape( {
+        dispatch: PropTypes.function,
+        getState: PropTypes.function,
+        subscribe: PropTypes.function
+    } ).isRequired
+};
 
 export default AwesomeApp;

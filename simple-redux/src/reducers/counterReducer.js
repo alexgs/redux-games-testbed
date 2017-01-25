@@ -7,7 +7,7 @@ let initialState = Immutable.Map( { value: 0 } );
 
 const counter = function counterReducer( state = initialState, action ) {
     if ( !Immutable.Map.isMap( state ) ) {
-        throw new Error( 'Argument `state` must be type Immutable.Map' );
+        throw new Error( errorMessages.stateImmutableMap );
     }
 
     switch ( action.type ) {
@@ -20,3 +20,9 @@ const counter = function counterReducer( state = initialState, action ) {
 };
 
 export default counter;
+
+let errorMessages = {
+    stateImmutableMap: 'Argument `state` must be type Immutable.Map'
+};
+
+export { errorMessages };
