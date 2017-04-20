@@ -1,0 +1,14 @@
+{
+  "name": "loroi-phase-1-javascript",
+  "description": "Loroi, Phase 1 - JavaScript",
+  "version": "0.1.0",
+  "author": "Phil Gates-Shannon <phil.gs@gmail.com>",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "scripts": {
+    "start": "browser-sync start --server --no-open --files=\"*.html,*.js\""
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.8"
+  }
+}
