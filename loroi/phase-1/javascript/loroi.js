@@ -19,6 +19,27 @@ function initLoroi() {
         webGLRenderer.render( scene, camera );
     };
 
+    // GUI control setup function
+    const controls = new function () {
+        this.radiusTop = 20;
+        this.radiusBottom = 20;
+        this.height = 20;
+        this.radialSegments = 8;
+        this.heightSegments = 8;
+        this.openEnded = false;
+
+        this.redraw = function () {
+            // Remove the old cylinder
+            scene.remove(cylinder);
+
+            // Create a new one
+            cylinder = createMesh(new THREE.CylinderGeometry(controls.radiusTop, controls.radiusBottom, controls.height, controls.radialSegments, controls.heightSegments, controls.openEnded));
+
+            // Add the new one to the scene
+            scene.add(cylinder);
+        };
+    };
+
     // Create a scene to hold all our elements such as objects, cameras, and lights.
     const scene = new THREE.Scene();
 
@@ -32,7 +53,7 @@ function initLoroi() {
     webGLRenderer.shadowMap.enabled = true;
 
     // Create and cylinder and add to the scene
-    const cylinder = createMesh( new THREE.CylinderGeometry( 20, 20, 20 ) );
+    let cylinder = createMesh( new THREE.CylinderGeometry( 20, 20, 20 ) );
     scene.add( cylinder );
 
     // Position the camera and point it to the center of the scene
@@ -43,6 +64,15 @@ function initLoroi() {
 
     // Add the output of the renderer to the HTML element
     document.getElementById( "WebGL-output" ).appendChild( webGLRenderer.domElement );
+
+    // Add the GUI
+    const gui = new dat.GUI();
+    gui.add(controls, 'radiusTop', -40, 40).onChange(controls.redraw);
+    gui.add(controls, 'radiusBottom', -40, 40).onChange(controls.redraw);
+    gui.add(controls, 'height', 0, 40).onChange(controls.redraw);
+    gui.add(controls, 'radialSegments', 1, 20).step(1).onChange(controls.redraw);
+    gui.add(controls, 'heightSegments', 1, 20).step(1).onChange(controls.redraw);
+    gui.add(controls, 'openEnded').onChange(controls.redraw);
 
     // call the render function
     let step = 0;
