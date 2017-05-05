@@ -19,7 +19,7 @@ Counter.propTypes = {
 
 const mapStateToProps = function( state ) {
     return {
-        value: state.value
+        value: state.get('value')
     }
 };
 

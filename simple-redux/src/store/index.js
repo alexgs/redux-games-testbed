@@ -1,6 +1,10 @@
+import Immutable from 'immutable';
 import { createStore } from 'redux';
 import reducers from '../reducers';
 
-const awesomeStore = createStore( reducers );
+const initialState = Immutable.Map( {
+    value: 0
+} );
+const awesomeStore = createStore( reducers, initialState );
 
 export default awesomeStore;
