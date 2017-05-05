@@ -4,9 +4,7 @@ import simpleActionCreator from './actions/simpleActionCreators';
 class AwesomeApp extends Component {
     constructor( props ) {
         super( props );
-        this.state = {
-            value: props.store.getState()
-        };
+        this.state = props.store.getState();
     }
 
     componentDidMount() {
@@ -14,10 +12,8 @@ class AwesomeApp extends Component {
     }
 
     handleChange() {
-        this.setState( {
-            value: this.props.store.getState()
-        } );
-    }
+        this.setState( this.props.store.getState() );
+}
 
     handleClick() {
         let action = simpleActionCreator.increment();
