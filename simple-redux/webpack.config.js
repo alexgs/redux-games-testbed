@@ -1,12 +1,15 @@
-'use strict';
-let webpackMerge = require( 'webpack-merge' );
+const path = require( 'path' );
 
-let commonConfig = require( './config/webpack.common.js' );
-let devConfig = require( './config/webpack.dev.js' );
-let devServer = require( './config/webpack.dev-server.js' );
+function buildConfig() {
+    const devServer = process.env.npm_lifecycle_event === 'start';
+    const configFile = devServer ? 'dev-server' : process.env[ 'NODE_ENV' ];
+    const options = {
+        extractCss: !devServer,
+        nodeEnv: process.env[ 'NODE_ENV' ],
+        outputPath: path.resolve( __dirname, './dist' ),
+        publicPath: ''
+    };
+    return require( `./config/webpack.${configFile}.js` )( options )
+}
 
-module.exports = webpackMerge(
-    commonConfig,
-    devConfig,
-    { devServer: devServer }
-);
+module.exports = buildConfig;
