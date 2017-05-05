@@ -14,12 +14,14 @@ const Counter = function( props ) {
 
 Counter.propTypes = {
     handleClick: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
     value: PropTypes.number.isRequired
 };
 
 const mapStateToProps = function( state ) {
     return {
-        value: state.get('value')
+        id: state.getIn( ['counters', 0, 'id' ] ),
+        value: state.getIn( ['counters', 0, 'value' ] )
     }
 };
 

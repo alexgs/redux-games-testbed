@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux-immutable';
-import counterReducer from './counterReducer';
+import countersReducer from './countersReducer';
 
 const rootReducer = combineReducers( {
-    value: counterReducer
+    counters: countersReducer
 } );
 
 export default rootReducer;
