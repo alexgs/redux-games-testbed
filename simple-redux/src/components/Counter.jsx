@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import simpleActionCreator from '../actions/simpleActionCreators';
+import actions from '../actions';
 
 const Counter = function( props ) {
     return (
@@ -26,7 +26,7 @@ const mapStateToProps = function( state ) {
 const mapDispatchToProps = function( dispatch ) {
     return {
         handleClick: function() {
-            dispatch( simpleActionCreator.increment() );
+            dispatch( actions.increment() );
         }
     }
 };
