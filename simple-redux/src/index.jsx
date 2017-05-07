@@ -1,14 +1,14 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import counterReducer from './reducers/counterReducer';
+import ReactDom from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 import AwesomeApp from './AwesomeApp';
 
-let store = createStore( counterReducer );
-
-ReactDOM.render(
-    <AwesomeApp store={ store } />,
+ReactDom.render(
+    <Provider store={ store } >
+        <AwesomeApp />
+    </Provider>,
     document.getElementById( 'awesome-app-root' )
 );
